@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package example;
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {} 
+  rpc GetServerStream (HelloRequest) returns (stream HelloReply) {} // Server-side streaming
+}
+
+message HelloRequest {
+  string language = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
