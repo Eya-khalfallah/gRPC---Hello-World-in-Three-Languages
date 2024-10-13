@@ -26,6 +26,7 @@ class HelloWorldWidget extends StatefulWidget {
 }
 
 class _HelloWorldWidgetState extends State<HelloWorldWidget> {
+  String _ipAddress = 'x.x.x.x'
   String _greeting = 'Press a button to say hello';
   List<String> _streamMessages = [];
   Stream<HelloReply>? _stream;
@@ -37,7 +38,7 @@ class _HelloWorldWidgetState extends State<HelloWorldWidget> {
 
   Future<void> _sayHello(String language) async {
     final channel = ClientChannel(
-      'x.x.x.x', // gRPC server host
+      _ipAddress, // gRPC server host
       port: 50051, // gRPC server port
       options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );

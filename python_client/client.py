@@ -4,8 +4,9 @@ import threading
 import service_pb2_grpc, service_pb2  # Ensure you generate Python gRPC stubs
 
 class GRPCClient:
+    ip_address = 'x.x.x.x'
     def __init__(self):
-        self.channel = grpc.insecure_channel('192.168.0.7:50051')  # Replace with your gRPC server's IP and port
+        self.channel = grpc.insecure_channel(f'{self.ip_address}:50051')  # Replace with your gRPC server's IP and port
         self.stub = service_pb2_grpc.GreeterStub(self.channel)
         self.last_language = 'en'  # Default language
 

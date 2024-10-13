@@ -29,8 +29,7 @@ git clone https://github.com/Eya-khalfallah/gRPC---Hello-World-in-Three-Language
 cd gRPC---Hello-World-in-Three-Languages
 ```
 
-### Install Dependencies
-#### Node.js Server
+### Node Server Setup
 
 Navigate to the Node.js server directory and install the required packages:
 
@@ -39,22 +38,79 @@ cd node_server
 npm install
 ```
 
-#### Python Client
+### Python Client Setup
 
-Navigate to the Python client directory and install the required packages:
+#### 1. Navigate to the Python client directory:
 
 ```bash
 cd python_client
-pip install -r requirements.txt
 ```
 
-#### Flutter Client
+#### 2. Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+#### 3. Activate the virtual environment:
+
+- Windows:
+
+```bash
+.\venv\Scripts\activate
+```
+
+- Linux:
+
+```bash
+source ./venv/bin/activate
+```
+
+#### 4. Install the dependencies:
+
+```bash
+pip install grpcio grpcio-tools
+```
+
+#### 5. Compile the protobuf file
+
+- Windows:
+
+```bash
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. --proto_path=..\proto service.proto
+```
+
+- Linux:
+
+```bash
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. --proto_path=../proto service.proto
+```
+
+#### 5. Set The Server IP Address
+
+Update the `ip_address` variable in the `client.py` file to match the IP address of your server.
+
+```python
+ip_address = 'x.x.x.x'
+```
+
+### Flutter Client Setup
+
+#### 1. Install dependencies
 
 Navigate to the Flutter client directory and get the dependencies:
 
 ```bash
 cd flutter_client
 flutter pub get
+```
+
+#### 2. Set The Server IP Address
+
+Update the `_ipAddress` variable in the `main.dart` file to match the IP address of your server.
+
+```dart
+String _ipAddress = 'x.x.x.x'
 ```
 
 ## Running the Server
